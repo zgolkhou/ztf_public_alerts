@@ -21,10 +21,19 @@ $ ./ztfMSIP.sh
 Here are the steps being implemented in the `ztfMSIP.sh` code! 
 - 1- Catching the entire alert stream (in `.avro` format) and dumpping them into a tarball
      ```
-     python catchMSIPStream.py ${topic_name} --group $group_name --tarName ${tarName}
+     $ python catchMSIPStream.py ${topic_name} --group ${group_name} --tarName ${tar_name}
+     
      # the code generates a topic name automatically in the following format:
-     ztf_[current_data]_programid1
-     for example: ztf_20180704_programid1 on July 4th 2018
+     # ztf_[current_data]_programid1
+     # for example here is the topic name:  ztf_20180704_programid1 on July 4th 2018
+     
+     # group_name: a Kafka consumer group name
+       for example: group_name=CatchPublicStream (the default in the code)
+       
+     # tar_name: the name of tarball
+       the code genrates automatically a tarname based on the topic_name: ztf_[date].tar
+       for example: ztf_20180704.tar 
      ```
+     
 - 2- Extracting info from alerts packet and putting them in a `csv` file.
 - 3- Compressing the tarball (`.tar --> .tar.gz`)
