@@ -2,16 +2,7 @@
 #
 # Creating a tarball for ztf msip alerts nightly. 
 #
-#---------------------------------
-# programid0  |  commissioning   |
-# programid1  |  public / MSIP   |
-# programid2  |  collaboration   |
-# programid3  |  Caltech*        |
-# --------------------------------
-# * private stream               |
-# --------------------------------
-#
-# topic format: ztf_%Y%m%d_programid[0,1,2]
+# topic format: ztf_%Y%m%d_programid1
 #
 #topic_name=$1
 #group_name=$2
