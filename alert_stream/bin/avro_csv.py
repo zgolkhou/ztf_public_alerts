@@ -29,9 +29,7 @@ import fastavro
 remove_duplicates = True
 
 # chnage the following path to where you want to dump generated files.
-pth = '/epyc/data/ztfMSIP/'
-
-pth2 = '/epyc/data/ztfDB/'
+pth = './'
 
 alert_fields = 'objectId,jd,fid,pid,diffmaglim,pdiffimfilename,programpi,programid,candid,isdiffpos,tblid,nid,rcid,field,xpos,ypos,\
 ra,dec,magpsf,sigmapsf,chipsf,magap,sigmagap,distnr,magnr,sigmagnr,chinr,sharpnr,sky,magdiff,\
@@ -48,9 +46,9 @@ def main():
     
     args = parser.parse_args()
     
-    if (tarfile.is_tarfile(pth+args.topic+'.tar.gz')):
-        tar = tarfile.open(pth+args.topic+'.tar.gz','r:gz')  # <-- if tar.gz
-        #tar = tarfile.open(pth+args.topic+'.tar','r')         # <-- if .tar
+    if (tarfile.is_tarfile(pth+args.topic+'.tar')):           # change .tar to .tar.gz if tar.gz
+        #tar = tarfile.open(pth+args.topic+'.tar.gz','r:gz')  # <-- if tar.gz
+        tar = tarfile.open(pth+args.topic+'.tar','r')         # <-- if .tar
         
         with open(pth+args.topic+'.csv','w') as alert_packet:
 
@@ -82,10 +80,6 @@ def main():
             #
             df.drop_duplicates(subset=None, inplace=True)
             df_af = len(df)
-            
-            with open(pth2+'logMSIPSummary.txt','a') as lg:
-                lg.write('%s \t %i \t %i \t %i \t %i \t %.9f \t %.9f \n'%
-                         (args.topic.split('_')[2], df_bf, df_af, min(df['candid']), max(df['candid']), min(df['jd']), max(df['jd']) ))
                 
             df.to_csv(pth+args.topic+'.csv', sep=',', header=True, index=False)
              
@@ -94,8 +88,6 @@ def main():
         
     else:
         print('filename does not exist to read! \n')
-        with open(pth2+'logMSIPSummary.txt','a') as lg:
-            lg.write('%s \t %i \t %i \t %i \t %i \t %.9f \t %.9f \n'%(args.topic.split('_')[2], 0, 0, 0, 0, 0, 0) )
 
 	 
 if __name__ == "__main__":
