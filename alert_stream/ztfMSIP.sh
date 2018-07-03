@@ -8,7 +8,7 @@
 # programid2  |  collaboration   |
 # programid3  |  Caltech*        |
 # --------------------------------
-# * not accessible from UW       |
+# * private stream               |
 # --------------------------------
 #
 # topic format: ztf_%Y%m%d_programid[0,1,2]
