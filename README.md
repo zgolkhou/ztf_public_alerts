@@ -1,5 +1,5 @@
 # ztf_public_alerts
-creating a tarball for the entire ZTF public alert stream each night
+creating a tarball for the entire ZTF public alert stream per night
 
 You need the following packages/libraries in order to execute the code:
 
