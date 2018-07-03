@@ -37,7 +37,7 @@ if [ ! -f ./${tarName}.tar.gz ] ; then
         #
         if [ -f ./${tarName}.tar ] ; then
             echo -e "# time: $(date) \n"
-            python ./alert_stream/bin/avro_csv.py ${collab_tarName}
+            python ./alert_stream/bin/avro_csv.py ${tarName}
             echo -e "# time: $(date) \n"
         else
             echo "# tarball file does not exist."
