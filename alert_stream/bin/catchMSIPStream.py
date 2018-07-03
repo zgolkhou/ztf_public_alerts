@@ -83,8 +83,6 @@ def main():
     args = parser.parse_args()
 
     # Configure consumer connection to Kafka broker
-    #conf = {'bootstrap.servers': 'kafka:9092',
-    #        'default.topic.config': {'auto.offset.reset': 'smallest'}}
     conf = {'bootstrap.servers': 'epyc.astro.washington.edu:9092,epyc.astro.washington.edu:9093,epyc.astro.washington.edu:9094',
             'default.topic.config': {'auto.offset.reset': 'smallest'}}
     if args.group:
@@ -93,15 +91,15 @@ def main():
         conf['group.id'] = os.environ['HOSTNAME']
 
     # Configure Avro reader schema
-    schema_files = ["/epyc/data/ztfDB/pro_msip/ztf-avro-alert/schema/candidate.avsc",
-                    "/epyc/data/ztfDB/pro_msip/ztf-avro-alert/schema/cutout.avsc",
-                    "/epyc/data/ztfDB/pro_msip/ztf-avro-alert/schema/prv_candidate.avsc",
-                    "/epyc/data/ztfDB/pro_msip/ztf-avro-alert/schema/alert.avsc"]
+    schema_files = ["./ztf-avro-alert/schema/candidate.avsc",
+                    "./ztf-avro-alert/schema/cutout.avsc",
+                    "./ztf-avro-alert/schema/prv_candidate.avsc",
+                    "./ztf-avro-alert/schema/alert.avsc"]
 
     # Start consumer and collect alerts in a stream
     with alertConsumer.AlertConsumer(args.topic, schema_files, **conf) as streamReader:
     
-        with tarfile.open("/epyc/data/ztf/alerts/public/"+args.tarName+".tar","a") as tar:
+        with tarfile.open("./"+args.tarName+".tar","a") as tar:
             while True:
             
                 try:
@@ -111,11 +109,11 @@ def main():
                         
                         print('currenttime: ',int(strftime('%H')))
                         if (int(strftime('%H')) >= stopTIME):
-                            print("break break break \n")
+                            print("break \n")
 
                             break
                         else:
-                            print("continue continue continue \n")
+                            print("continue \n")
                             continue     				
                     
                     else:
@@ -153,8 +151,7 @@ def main():
                     sys.stderr.write('%% Aborted by user\n')
                     break
             
-            with open('/epyc/data/ztfDB/log/logMSIPStatus.txt','a') as lg:
-                lg.write('# we reached the end of stream at %s \n'%(strftime("%b %d %Y %H:%M:%S")))
+            print('we reached the end of stream at: {}'.format(strftime("%b %d %Y %H:%M:%S")))
 
             sys.exit()
 
