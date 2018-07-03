@@ -1,6 +1,16 @@
 # ztf_public_alerts
 creating a tarball for the entire ZTF public alert stream each night
 
+You need the following packages/libraries in order to execute the code:
+
+- avro
+- fastavro
+- confluent_kafka 
+
+```
+$ conda install -c defaults -c conda-forge librdkafka python-confluent-kafka python-avro cython fastavro
+```
+
 From the ztf_public_alerts directory:
 
 ```
