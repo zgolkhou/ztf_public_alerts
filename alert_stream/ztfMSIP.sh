@@ -30,8 +30,8 @@ if [ ! -f $pth0/public/${tarName}.tar.gz ] ; then
         # step:1
         # reading a topic and creating topic.tar file from all alerts.avro
         #
-	echo -e "\n\n#------------------------------- \n\n" >> $logpth
-	echo \# topic name: $topic_name >> $logpth
+	echo -e "\n\n-------------------------------\n\n"
+	echo \# topic name: $topic_name
 	#
 	python $pth/bin/catchMSIPStream.py ${topic_name} --group $group_name --tarName ${tarName}
         #
