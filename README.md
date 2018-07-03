@@ -20,7 +20,9 @@ $ ./ztfMSIP.sh
 
 Here are the steps being implemented in the `ztfMSIP.sh` code! 
 - 1- Catching the entire alert stream (in `.avro` format) and dumpping them into a tarball
+     
      ```
+     $ cd ./alert_stream/bin
      $ python catchMSIPStream.py ${topic_name} --group ${group_name} --tarName ${tar_name}
      
      # topic_name: the bash script (ztfMSIP.sh) generates a topic name automatically in the following format
@@ -38,4 +40,13 @@ Here are the steps being implemented in the `ztfMSIP.sh` code!
      ```
      
 - 2- Extracting info from alerts packet and putting them in a `csv` file.
+    
+     ```
+     $ cd ./alert_stream/bin
+     $ python avro_csv.py ${tar_name}
+     
+     # tar_name: the tar name from the step 1 
+     # for example: ztf_20180704 (without .tar)
+     ```
+     
 - 3- Compressing the tarball (`.tar --> .tar.gz`)
