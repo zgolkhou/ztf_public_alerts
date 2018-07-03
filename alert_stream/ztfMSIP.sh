@@ -18,7 +18,7 @@
 #tarName=$3
 topic_name=`printf 'ztf_%(%Y%m%d)T_programid1' -1`
 tarName=`printf 'ztf_public_%(%Y%m%d)T' -1`
-group_name=catchingMSIPalerts
+group_name=CatchPublicStream
 
 export PATH="/epyc/opt/anaconda/bin:$PATH"
 export PYTHONPATH="./alert_stream/python:$PYTHONPATH"
