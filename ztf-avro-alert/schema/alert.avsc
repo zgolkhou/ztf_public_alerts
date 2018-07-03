@@ -1,0 +1,18 @@
+{
+	"namespace": "ztf",
+	"type": "record",
+	"name": "alert",
+	"doc": "avro alert schema",
+	"version": "1.8",
+	"fields": [
+		{"name": "objectId", "type": "string", "doc": "add descriptions like this"},
+		{"name": "candid", "type": "long"},
+		{"name": "candidate", "type": "ztf.alert.candidate"},
+		{"name": "prv_candidates", "type": [{
+				"type": "array",
+				"items": "ztf.alert.prv_candidate"}, "null" ], "default": null},
+		{"name": "cutoutScience", "type": ["ztf.alert.cutout", "null"], "default": null},
+		{"name": "cutoutTemplate", "type": ["ztf.alert.cutout", "null"], "default": null},
+		{"name": "cutoutDifference", "type": ["ztf.alert.cutout", "null"], "default": null}
+			]
+}
