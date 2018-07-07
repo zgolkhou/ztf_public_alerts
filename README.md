@@ -1,7 +1,7 @@
 # ztf_public_alerts
 creating a tarball for the entire ZTF public alert stream per night
 
-You need the following packages/libraries in order to execute the code:
+You need the following python packages/libraries in order to execute the code:
 
 - avro
 - fastavro
