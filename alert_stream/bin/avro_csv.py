@@ -31,13 +31,14 @@ remove_duplicates = True
 # chnage the following path to where you want to dump generated files.
 pth = './'
 
-alert_fields = 'objectId,jd,fid,pid,diffmaglim,pdiffimfilename,programpi,programid,candid,isdiffpos,tblid,nid,rcid,field,xpos,ypos,\
+alert_fields = 'objectId,jd,fid,pid,diffmaglim,programid,candid,isdiffpos,tblid,nid,rcid,field,xpos,ypos,\
 ra,dec,magpsf,sigmapsf,chipsf,magap,sigmagap,distnr,magnr,sigmagnr,chinr,sharpnr,sky,magdiff,\
 fwhm,classtar,mindtoedge,magfromlim,seeratio,aimage,bimage,aimagerat,bimagerat,elong,nneg,nbad,rb,ssdistnr,\
 ssmagnr,ssnamenr,sumrat,magapbig,sigmagapbig,ranr,decnr,sgmag1,srmag1,simag1,szmag1,sgscore1,distpsnr1,ndethist,ncovhist,\
 jdstarthist,jdendhist,scorr,tooflag,objectidps1,objectidps2,sgmag2,srmag2,simag2,szmag2,sgscore2,distpsnr2,objectidps3,sgmag3,\
-srmag3,simag3,szmag3,sgscore3,distpsnr3,nmtchps,rfid,jdstartref,jdendref,nframesref'
-
+srmag3,simag3,szmag3,sgscore3,distpsnr3,nmtchps,rfid,jdstartref,jdendref,nframesref,\
+rbversion,dsnrms,ssnrms,dsdiff,magzpsci,magzpsciunc,magzpscirms,nmatches,clrcoeff,\
+clrcounc,zpclrcov,zpmed,clrmed,clrrms,neargaia,neargaiabright,maggaia,maggaiabright'
 
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
